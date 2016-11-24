@@ -1,0 +1,104 @@
+{
+  "stop": {
+    "id": [
+      "12231"
+    ],
+    "rtpiFeedName": [
+      ""
+    ],
+    "nm": [
+      "SUMMIT AVE + ESSEX ST"
+    ],
+    "sri": [
+      {
+        "rt": [
+          "163"
+        ],
+        "rtRtpiFeedName": [
+          ""
+        ],
+        "rd": [
+          "163"
+        ],
+        "d": [
+          "New York"
+        ],
+        "dd": [
+          "New York"
+        ],
+        "dRtpiFeedName": [
+          ""
+        ]
+      }
+    ],
+    "sbs": [
+      "\r\n\r\n\r\n\t"
+    ],
+    "cr": [
+      "163"
+    ],
+    "crRtpiFeedName": [
+      ""
+    ],
+    "pre": [
+      {
+        "pt": [
+          "3 MIN"
+        ],
+        "fd": [
+          "163 NEW YORK  VIA UNION CITY"
+        ],
+        "v": [
+          "7699"
+        ],
+        "scheduled": [
+          "false"
+        ],
+        "rn": [
+          "163"
+        ],
+        "rd": [
+          "163"
+        ],
+        "m": [
+          "1"
+        ],
+        "consist": [
+          ""
+        ],
+        "cars": [
+          ""
+        ]
+      },
+      {
+        "pt": [
+          "16 MIN"
+        ],
+        "fd": [
+          "163 NEW YORK  VIA UNION CITY"
+        ],
+        "v": [
+          "7711"
+        ],
+        "scheduled": [
+          "false"
+        ],
+        "rn": [
+          "163"
+        ],
+        "rd": [
+          "163"
+        ],
+        "m": [
+          "1"
+        ],
+        "consist": [
+          ""
+        ],
+        "cars": [
+          ""
+        ]
+      }
+    ]
+  }
+}

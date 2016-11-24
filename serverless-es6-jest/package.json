@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "superagent": "^3.0.0",
-    "superagent-es6-promise": "^1.0.0",
     "xml2js": "^0.4.17"
   }
 }

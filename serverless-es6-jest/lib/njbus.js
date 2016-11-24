@@ -1,7 +1,5 @@
 import { parseString } from 'xml2js';
-//import request from 'superagent-es6-promise';
-import request from "superagent";
-
+import { get } from 'http';
 
 export function getUrl(route, stop) {
     let baseURL = 'http://mybusnow.njtransit.com/bustime/map/getStopPredictions.jsp';
@@ -12,18 +10,18 @@ export function getUrl(route, stop) {
 }
 
 
-export async function getEstimation(url) {
+export async function getEstimationTime(url) {
     return new Promise((resolve, reject) => {
-        request
-            .get(url)
-            .end((err, response) => {
-                if (err) {
-                    reject(err);
-                }
-                let xml = response.text;
-                parseString(xml, (err, res) => {
-                    return err ? reject(err) : resolve(res);
+        get(url, (response) => {
+            let bodyChunks = [];
+            response.on('data', (chunk) => {
+                bodyChunks.push(chunk);
+            }).on('end', () => {
+                let xml = Buffer.concat(bodyChunks);
+                parseString(xml, (err, result) => {
+                    return err ? reject(err) : resolve(result);
                 });
             });
+        });
     });
 }

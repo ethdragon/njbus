@@ -1,0 +1,19 @@
+{
+  "stop": {
+    "id": [
+      "12231"
+    ],
+    "rtpiFeedName": [
+      ""
+    ],
+    "nm": [
+      "SUMMIT AVE + ESSEX ST"
+    ],
+    "sbs": [
+      "\r\n\r\n\r\n\t"
+    ],
+    "noPredictionMessage": [
+      "No arrival times"
+    ]
+  }
+}
