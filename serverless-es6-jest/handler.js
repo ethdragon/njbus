@@ -3,22 +3,26 @@ import { getUrl, getEstimationTime } from './lib/njbus';
 
 export const helloLambda = (event, context, callback) => {
 
-  let url = getUrl(163, 12231);
-  getEstimationTime(url).then((result) => {
-    console.log(result.stop.pre[0].pt[0]);
-    // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-    // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+  const Alexa = require('alexa-sdk');
 
-    const response = {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-//      input: event,
-        result
-      }),
-    };
-    callback(null, response);
-  });
+  const handlers = {
+    'GetBusScheduleIntent': function () {
+      console.log(JSON.stringify(this.event.request.intent));
+      let busNumber = parseInt(this.event.request.intent.slots.busNumber.value);
+      let url = getUrl(busNumber, 12231);
+      getEstimationTime(url).then((result) => {
+        this.emit(':tell', result.stop.pre[0].pt[0]);
+      });
+    }
+  };
+
+  const alexa = Alexa.handler(event, context);
+
+  alexa.APP_ID = 'amzn1.ask.skill.95fe6da0-b27f-405f-8438-a7cad243e081';
+  // To enable string internationalization (i18n) features, set a resources object.
+  //alexa.resources = languageStrings;
+  alexa.registerHandlers(handlers);
+  alexa.execute();
 };
 
 export default {
