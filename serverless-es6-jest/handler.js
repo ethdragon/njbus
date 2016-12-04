@@ -1,4 +1,8 @@
-import { getUrl, getEstimationTime } from './lib/njbus';
+import {
+  getUrl,
+  getEstimationTime,
+  handleScenario
+} from './lib/njbus';
 
 
 export const helloLambda = (event, context, callback) => {
@@ -9,9 +13,16 @@ export const helloLambda = (event, context, callback) => {
     'GetBusScheduleIntent': function () {
       console.log(JSON.stringify(this.event.request.intent));
       let busNumber = parseInt(this.event.request.intent.slots.busNumber.value);
-      let url = getUrl(busNumber, 12231);
+      let busType = this.event.request.intent.slots.busType.value;
+      let stop = 12101;
+      if (busType && busType.startsWith('loc')) {
+        stop = 12231;
+      }
+      let url = getUrl(busNumber, stop);
       getEstimationTime(url).then((result) => {
-        this.emit(':tell', result.stop.pre[0].pt[0]);
+        let speech = handleScenario(result, busNumber);
+        console.log(speech);
+        this.emit(':tell', speech);
       });
     }
   };
